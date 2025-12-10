@@ -1,0 +1,6 @@
+name: UltraFastParticles
+version: '1.0-SNAPSHOT'
+main: com.floodeer.ultraFastParticles.UltraFastParticles
+api-version: '1.21'
+commands:
+  ufp:
