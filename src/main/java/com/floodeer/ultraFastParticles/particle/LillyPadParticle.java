@@ -4,16 +4,17 @@ import com.floodeer.ultraFastParticles.PlayerMovementTracker;
 import com.floodeer.ultraFastParticles.math.ParticleEquation;
 import com.floodeer.ultraFastParticles.particle.types.CycloneEffect;
 import com.floodeer.ultraFastParticles.particle.types.HelixEffect;
+import com.floodeer.ultraFastParticles.particle.types.LillyPadEffect;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-public class HelixParticle extends ParticleBase {
+public class LillyPadParticle extends ParticleBase {
 
-    public HelixParticle(Player p) {
-        super(p, new HelixEffect());
+    public LillyPadParticle (Player p) {
+        super(p, new LillyPadEffect());
     }
 
     @Override
@@ -22,7 +23,7 @@ public class HelixParticle extends ParticleBase {
         Location base = p.getLocation();
 
         if(PlayerMovementTracker.isMoving(p)) {
-            p.getWorld().spawnParticle(Particle.DUST, base, 1, new Particle.DustOptions(Color.RED, 1.0f));
+            p.getWorld().spawnParticle(Particle.FLAME, base, 1, 0.2f, 0.1, 0.2f, 0);
             return;
         }
 
@@ -30,7 +31,7 @@ public class HelixParticle extends ParticleBase {
 
             Location loc = base.clone().add(v);
 
-            p.getWorld().spawnParticle(Particle.DUST, loc, 1, new Particle.DustOptions(Color.RED, 1.0f));
+            p.getWorld().spawnParticle(Particle.FLAME, loc, 1, 0, 0, 0, 0);
         }
     }
 }

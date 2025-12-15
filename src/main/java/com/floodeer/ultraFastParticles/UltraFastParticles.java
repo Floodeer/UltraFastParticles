@@ -1,8 +1,6 @@
 package com.floodeer.ultraFastParticles;
 
-import com.floodeer.ultraFastParticles.particle.CycloneParticle;
-import com.floodeer.ultraFastParticles.particle.HelixParticle;
-import com.floodeer.ultraFastParticles.particle.ParticleManager;
+import com.floodeer.ultraFastParticles.particle.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,6 +21,8 @@ public final class UltraFastParticles extends JavaPlugin {
     public void onEnable() {
         main = this;
         particleManager = new ParticleManager();
+        getServer().getPluginManager().registerEvents(new PlayerMovementTracker(), UltraFastParticles.get());
+
         getCommand("ufp").setExecutor((sender, command, label, args) -> {
             if (!(sender instanceof Player player))
                 return false;
@@ -34,6 +34,12 @@ public final class UltraFastParticles extends JavaPlugin {
                 particleManager.addEffect(player, new CycloneParticle(player));
             }else if(args[0].equalsIgnoreCase("helix")) {
                 particleManager.addEffect(player, new HelixParticle(player));
+            }else if(args[0].equalsIgnoreCase("lillypad")) {
+                particleManager.addEffect(player, new LillyPadParticle(player));
+            }else if(args[0].equalsIgnoreCase("poseidon")) {
+                particleManager.addEffect(player, new PoseidonParticle(player));
+            }else if(args[0].equalsIgnoreCase("butterfly")) {
+                particleManager.addEffect(player, new ButterflyParticle(player));
             }
             return true;
         });
